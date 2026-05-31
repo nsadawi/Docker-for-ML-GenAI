@@ -1,0 +1,1 @@
+# This is the Repo for my [Docker and Containers for ML and GenAI](https://www.oreilly.com/live-events/introduction-to-docker-and-containers/0636920359579/) with O'Really/Pearson.
