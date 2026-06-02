@@ -78,27 +78,25 @@ Open your terminal inside the folder containing these files and execute the foll
 Step A: Build the Docker Image
 Wrap your Python app and its dependencies into an image named genai-api-app.
 
-docker build -t genai-api-app .
+```docker build -t genai-api-app .```
 
 
 Step B: Run the Container (Injecting your API Key)
 When you run the container, use the -e flag to securely pass your actual OpenAI API key into the container environment without hardcoding it into your code.
 
-docker run -d -p 8000:8000 -e OPENAI_API_KEY="your_actual_openai_api_key_here" --name my-ai-app genai-api-app
+```docker run -d -p 8000:8000 -e OPENAI_API_KEY="your_actual_openai_api_key_here" --name my-ai-app genai-api-app```
 
 
 ## 3. How to Test Your App:
 Your containerized AI application is now listening on port 8000. You can test it by sending a POST request using curl from your terminal:
-
+```
 curl -X POST "http://localhost:8000/ask" \
      -H "Content-Type: application/json" \
      -d '{"prompt": "Give me a 3-word slogan for Docker."}'
+```
 
-
-Expected Response:
-
-JSON
-{"reply": "Pack. Ship. Run."}
+Expected Response (JSON):
+```{"reply": "Pack. Ship. Run."}```
 
 
 
