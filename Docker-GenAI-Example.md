@@ -9,6 +9,7 @@ a. Create a new folder and place these three simple files inside it:
 
 main.py (The Python Web App)
 
+```
 import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -35,19 +36,20 @@ async def ask_ai(query: AIQuery):
         return {"reply": response.choices[0].message.content}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
+```
 
 
 b. Create a requirements.txt with the following dependencies:
-
+```
 Plaintext
 fastapi
 uvicorn
 openai
 pydantic
+```
 
 c. Create the following Dockerfile
-
+```
 # Step 1: Use a slim Python base image
 FROM python:3.11-slim
 
@@ -66,7 +68,7 @@ EXPOSE 8000
 
 # Step 6: Start the Uvicorn web server
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-
+```
 
 
 
