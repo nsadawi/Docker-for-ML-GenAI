@@ -61,6 +61,17 @@ CMD ["python", "app.py"]
 ```
 
 
+### The Ollama Container:
+You will need an Ollama container up and running, here's how you start it:
+
+```docker run -d -v ollama:/root/.ollama -p 11434:11434 --network genai-network --name ollama-container ollama/ollama```
+
+
+After that, instruct the running Ollama engine to pull down the gemma3:1b model files as follows:
+
+```docker exec -it ollama-container ollama run gemma3:1b```
+
+(Once the download completes and the prompt opens, type ```/exit``` and hit Enter to jump back to your regular terminal).
 
 ## 2- Networking the Containers Together:
 For this to work, we need to bridge your existing Ollama container and this new Python container into the same network space.
