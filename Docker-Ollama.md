@@ -61,11 +61,17 @@ CMD ["python", "app.py"]
 ```
 
 
-## 2- The Ollama Container:
+## 2- The Ollama Container and Docker Network:
+
+### Step A: Create a custom Docker network
+```docker network create genai-network```
+
+### Step B: Start an Ollama Container and Connect it to the Network:
 You will need an Ollama container up and running, here's how you start it:
 
 ```docker run -d -v ollama:/root/.ollama -p 11434:11434 --network genai-network --name ollama-container ollama/ollama```
 
+### Step C: Pull down the gemma3:1b Model Files:
 
 After that, instruct the running Ollama engine to pull down the gemma3:1b model files as follows:
 
@@ -73,6 +79,27 @@ After that, instruct the running Ollama engine to pull down the gemma3:1b model 
 
 (Once the download completes and the prompt opens, type ```/exit``` and hit Enter to jump back to your regular terminal).
 
+
+### Step D: Build your Python image:
+In the directory containing your new files, run:
+
+```docker build -t python-gemma-client .```
+
+### Step E: Run the Python app container on the same network
+
+```docker run --rm --network genai-network python-gemma-client```
+
+### How It Works Under the Hood:
+Because both containers are pinned to ```genai-network```, Docker’s internal DNS intercepts the request to ```http://ollama-container```. It resolves it to the private IP address of your Ollama container automatically. 
+
+The app completes its execution, prints Gemma's response right in your terminal, and safely destroys the client container (```--rm```), leaving your backend model engine up and running.
+
+
+
+
+
+
+//////\\\\\\\
 ## 3- Networking the Containers Together:
 For this to work, we need to bridge your existing Ollama container and this new Python container into the same network space.
 
