@@ -41,7 +41,6 @@ async def ask_ai(query: AIQuery):
 
 b. Create a requirements.txt with the following dependencies:
 ```
-Plaintext
 fastapi
 uvicorn
 openai
