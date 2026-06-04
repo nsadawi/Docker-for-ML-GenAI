@@ -120,7 +120,8 @@ curl -X POST "http://localhost:8000/predict" \
 ```
 
 Expected Response (JSON):
-```{
+```
+{
   "text": "I absolutely love containerizing my machine learning workflows with Docker!",
   "sentiment": "POSITIVE",
   "confidence": 0.9997
