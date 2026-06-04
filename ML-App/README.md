@@ -1,8 +1,7 @@
 # Building and using a Docker Image/Container
 
-### This example helps you create a Docker image that:
-* Is based on the Docker image python:3.11-slim.
-* We will the sklearn and pandas packages.
+* The image is based on the Docker image python:3.11-slim.
+* We will use the sklearn and pandas packages (see the `requirements.txt` file where we can specify exact versions of dependencies).
 * A Python script that receives a CSV file, perform some calculations on it and write the results into a results file.
 * This results file should be saved into our host machine (permanent using a Docker volume).
 
