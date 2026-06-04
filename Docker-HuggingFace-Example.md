@@ -5,7 +5,7 @@ When dockerizing Hugging Face models, the biggest hurdle developers face is imag
 This is an introductory example of a Sentiment Analysis API. It uses a lightweight, optimized Dockerfile layout that downloads and caches a model from the Hugging Face Hub during the build phase so it's instantly ready to run offline.
 
 ## 1. The Application Files:
-a. Create a new folder and place these three simple files inside it:
+### a. Create a new folder and place these three simple files inside it:
 
 main.py (The Python Web App)
 
@@ -47,9 +47,9 @@ def predict_sentiment(payload: TextPayload):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))```
+```
 
-
-b. Create a requirements.txt with the following dependencies:
+### b. Create a ```requirements.txt``` with the following dependencies:
 ```
 fastapi==0.110.0
 uvicorn==0.28.0
@@ -60,7 +60,7 @@ pydantic==2.6.4
 
 Optimization Tip: Appending ```--index-url https://download.pytorch.org/whl/cpu``` forces pip to install the CPU-only version of PyTorch. Standard PyTorch ships with massive NVIDIA CUDA binaries that push your image size past 6GB. Using the CPU variant keeps your image highly optimized and lightweight.
 
-c. Create the following Dockerfile
+### c. Create the following Dockerfile
 ```
 FROM python:3.11-slim
 
