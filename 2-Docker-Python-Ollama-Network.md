@@ -1,4 +1,5 @@
 # In this Example, we are going to access a container from another container
+### Notice: This Image is > 6GB in size on a MacBook Pro.
 
 To allow one Docker container to talk to another, the most reliable approach is to place them on the same user-defined Docker network. This enables automatic service discovery. This means our Python container can connect to the Ollama container simply by using the Ollama container's name as the URL hostname.
 

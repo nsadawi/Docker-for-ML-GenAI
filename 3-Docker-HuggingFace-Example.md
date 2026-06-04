@@ -1,4 +1,5 @@
 # Here were are going to use Hugging Face from Docker
+### Notice: This Image is > 6GB in size on a MacBook Pro.
 
 When dockerizing Hugging Face models, the biggest hurdle developers face is image size and cold-start times. If you don't build your image carefully, Docker will download multi-gigabyte models from the cloud every single time the container spins up, leading to incredibly slow restarts.
 
