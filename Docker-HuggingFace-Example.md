@@ -46,7 +46,7 @@ def predict_sentiment(payload: TextPayload):
             "confidence": round(result["score"], 4)
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))```
+        raise HTTPException(status_code=500, detail=str(e))
 ```
 
 ### b. Create a ```requirements.txt``` with the following dependencies:
